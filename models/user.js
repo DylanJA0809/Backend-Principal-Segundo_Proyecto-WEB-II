@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     id_number: {
         type: String,
+        required: true,
+        unique: true,
         trim: true
     },
     name: {
@@ -10,10 +12,6 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     last_name: {
-        type: String,
-        trim: true
-    },
-    birthdate: {
         type: String,
         trim: true
     },
