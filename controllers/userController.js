@@ -15,7 +15,6 @@ const userPost = async (req, res) => {
       id_number: req.body.id_number,
       name: req.body.name,
       last_name: req.body.last_name,
-      birthdate: req.body.birthdate,
       email: req.body.email,
       password: hashedPassword
     });
