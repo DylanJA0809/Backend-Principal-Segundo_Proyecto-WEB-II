@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    birthdate: {
-        type: String,
-        trim: true
-    },
     email: {
         type: String,
         required: true,
@@ -25,7 +21,10 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+    },
+    google_id: {
+        type: String,
+        default: null
     }
 }, {
     timestamps: true
