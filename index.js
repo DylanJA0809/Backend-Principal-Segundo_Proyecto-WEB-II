@@ -15,10 +15,12 @@ const app = express();
 
 // Middlewares
 app.use(bodyParser.json());
-app.use(cors({
-  origin: '*',
-  methods: '*'
-}));
+app.use(cors({ origin: '*', methods: '*' }));
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
+
 
 const mongoString = process.env.DATABASE_URL;
 const PORT = process.env.PORT;
@@ -46,6 +48,8 @@ app.use("/api", require("./routes/questionRoutes"));
 app.use("/api", require("./routes/answerRoutes"));
 
 app.use("/uploads", express.static("uploads"));
+
+app.use("/", require("./routes/authGoogleRoutes"));
 
 app.listen(PORT, () =>
   console.log(`UTN API service listening on port ${PORT}!`)
