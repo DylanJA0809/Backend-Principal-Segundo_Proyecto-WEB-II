@@ -25,6 +25,15 @@ const userSchema = new mongoose.Schema({
     google_id: {
         type: String,
         default: null
+    },
+    status: {
+        type: String,
+        enum: ["pending", "active"],
+        default: "pending"
+    },
+    activation_token: {
+        type: String,
+        default: null
     }
 }, {
     timestamps: true
