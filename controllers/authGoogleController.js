@@ -24,7 +24,8 @@ const googleLogin = async (req, res) => {
         last_name: family_name,
         email,
         password: 0,
-        google_id: sub
+        google_id: sub,
+        status: "active"
       });
       await user.save();
     }
