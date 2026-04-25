@@ -37,6 +37,10 @@ const generateToken = async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
+    if (user.status === "pending") {
+      return res.status(403).json({ message: "Cuenta pendiente de activación." });
+    }
+
     // main difference with token based auth is that we are using a secret key to sign the token
     // and the a payload is stored with the token
     const payload = { userId: user._id, email: user.email };
