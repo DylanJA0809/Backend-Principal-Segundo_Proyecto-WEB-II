@@ -9,7 +9,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 
-const { generateToken } = require('./controllers/authJWT');
+const { generateToken, verify2FA } = require("./controllers/authJWT");
 
 const app = express();
 
@@ -37,7 +37,8 @@ database.once('connected', () => {
 });
 
 // Login route to generate JWT token
-app.post('/auth/token', generateToken);
+app.post("/auth/token", generateToken);
+app.post("/auth/verify-2fa", verify2FA);
 
 // User routes
 app.use('/api', require('./routes/userRoutes'));
