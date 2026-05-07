@@ -98,6 +98,7 @@ PADRON_API_URL=http://localhost:8080/padron-api/index.php
 TWILIO_ACCOUNT_SID=tu_account_sid
 TWILIO_AUTH_TOKEN=tu_auth_token
 TWILIO_PHONE_NUMBER=tu_numero_twilio
+OPENROUTER_API_KEY=tu_api_key_openrouter
 ```
 
 ---
@@ -184,7 +185,14 @@ Servicio de mensajería SMS utilizado para el envío del código de verificació
 
 - Cuenta de prueba: solo funciona con números verificados en la consola de Twilio
 - Cuenta de producción: permite enviar SMS a cualquier número
+  
+### OpenRouter
+Servicio de IA utilizado para validar que los mensajes del chat no contengan información de contacto personal (teléfonos, correos, redes sociales, etc.).
 
+- Proveedor: openrouter.ai
+- Modelo utilizado: openai/gpt-3.5-turbo
+- Requiere: una API key válida de OpenRouter configurada en el .env como OPENROUTER_API_KEY
+Documentación: https://openrouter.ai/docs
 ---
 
 ## Reglas del sistema de preguntas y respuestas
