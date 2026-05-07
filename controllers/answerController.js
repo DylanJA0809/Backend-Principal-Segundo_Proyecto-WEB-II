@@ -1,6 +1,7 @@
 const Answer = require("../models/answer");
 const Question = require("../models/question");
 const Vehicle = require("../models/vehicle");
+const { containsContactInfo } = require("../utils/openai");
 
 const answerPost = async (req, res) => {
   try {
@@ -28,6 +29,13 @@ const answerPost = async (req, res) => {
 
     if (existingAnswer) {
       return res.sendStatus(409);
+    }
+
+    const hasContactInfo = await containsContactInfo(req.body.message);
+    if (hasContactInfo) {
+      return res.status(400).json({
+        message: "Tu mensaje contiene información de contacto personal! Por favor utiliza la plataforma solo para negociar."
+      });
     }
 
     const answer = new Answer({
