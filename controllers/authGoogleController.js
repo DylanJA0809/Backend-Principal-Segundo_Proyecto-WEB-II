@@ -48,7 +48,7 @@ const googleLogin = async (req, res) => {
 
 const completeGoogleProfile = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user.userId;
     const { id_number } = req.body;
 
     const user = await User.findByIdAndUpdate(
