@@ -14,6 +14,7 @@ El sistema gestiona autenticación de usuarios, validación de identidad contra 
 - JWT
 - Multer
 - Twilio
+- OpenRouter
 - SendGrid
 - dotenv
 - cors
